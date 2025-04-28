@@ -2,11 +2,11 @@ import { StarIcon } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import DeliveryInfo from "@/app/components/delivery-info";
+import ProductList from "@/components/product-list";
 import { db } from "@/lib/prisma";
 
 import RestaurantImage from "./_components/restaurant-image";
-import DeliveryInfo from "@/app/components/delivery-info";
-import ProductList from "@/components/product-list";
 
 interface RestaurantPageProps {
   params: {
@@ -49,16 +49,6 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
           },
         },
       },
-    },
-    select: {
-      id: true,
-      name: true,
-      description: true,
-      avatarImageUrl: true,
-      coverImageUrl: true,
-      deliveryPrice: true,
-      deliveryTime: true,
-      distance: true,
     },
   });
 
