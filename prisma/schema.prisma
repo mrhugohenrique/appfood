@@ -20,6 +20,9 @@ model Restaurant {
   description    String
   avatarImageUrl String
   coverImageUrl  String
+  deliveryPrice  Float         @default(5.00)
+  deliveryTime   Int           @default(30)
+  distance       Float         @default(2.5)
   menuCategories MenuCategory[]
   products       Product[]
   orders         Order[]

@@ -16,6 +16,9 @@ const main = async () => {
           "https://u9a6wmr3as.ufs.sh/f/jppBrbk0cChQvcNP9rHlEJu1vCY5kLqzjf29HKaeN78Z6pRy",
         coverImageUrl:
           "https://u9a6wmr3as.ufs.sh/f/jppBrbk0cChQac8bHYlkBUjlHSKiuseLm2hIFzVY0OtxEPnw",
+        deliveryPrice: 5.00,
+        deliveryTime: 30,
+        distance: 2.5,
       },
     });
     const combosCategory = await tx.menuCategory.create({

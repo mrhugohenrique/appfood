@@ -1,10 +1,12 @@
-import { db } from "@/app/_lib/prisma";
-import { notFound } from "next/navigation";
-import RestaurantImage from "./_components/restaurant-image";
-import Image from "next/image";
 import { StarIcon } from "lucide-react";
-import DeliveryInfo from "@/app/_components/delivery-info";
-import ProductList from "@/app/_components/product-list";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+
+import { db } from "@/lib/prisma";
+
+import RestaurantImage from "./_components/restaurant-image";
+import DeliveryInfo from "@/app/components/delivery-info";
+import ProductList from "@/components/product-list";
 
 interface RestaurantPageProps {
   params: {
@@ -18,7 +20,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
       id,
     },
     include: {
-      categories: {
+      menuCategories: {
         orderBy: {
           createdAt: "desc",
         },
@@ -48,6 +50,16 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
         },
       },
     },
+    select: {
+      id: true,
+      name: true,
+      description: true,
+      avatarImageUrl: true,
+      coverImageUrl: true,
+      deliveryPrice: true,
+      deliveryTime: true,
+      distance: true,
+    },
   });
 
   if (!restaurant) {
@@ -63,7 +75,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
         <div className="flex items-center gap-[0.375rem]">
           <div className="relative h-8 w-8">
             <Image
-              src={restaurant.imageUrl}
+              src={restaurant.avatarImageUrl}
               alt={restaurant.name}
               fill
               className="rounded-full object-cover"
@@ -83,7 +95,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
       </div>
 
       <div className="mt-3 flex gap-4 overflow-x-scroll px-5 [&::-webkit-scrollbar]:hidden">
-        {restaurant.categories.map((category) => (
+        {restaurant.menuCategories.map((category) => (
           <div
             key={category.id}
             className="min-w-[167px] rounded-lg bg-[#F4F4F4] text-center"
@@ -101,7 +113,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
         <ProductList products={restaurant.products} />
       </div>
 
-      {restaurant.categories.map((category) => (
+      {restaurant.menuCategories.map((category) => (
         <div className="mt-6 space-y-4" key={category.id}>
           {/* TODO: mostrar produtos mais pedidos quando implementarmos realização de pedido */}
           <h2 className="px-5  font-semibold">{category.name}</h2>

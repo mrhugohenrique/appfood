@@ -1,13 +1,14 @@
 "use client";
 
-import { Button } from "@/app/_components/ui/button";
 import { Restaurant } from "@prisma/client";
 import { ChevronLeftIcon, HeartIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+import { Button } from "@/components/ui/button";
+
 interface RestaurantImageProps {
-  restaurant: Pick<Restaurant, "name" | "imageUrl">;
+  restaurant: Pick<Restaurant, "name" | "avatarImageUrl">;
 }
 
 const RestaurantImage = ({ restaurant }: RestaurantImageProps) => {
@@ -18,7 +19,7 @@ const RestaurantImage = ({ restaurant }: RestaurantImageProps) => {
   return (
     <div className="relative h-[250px] w-full">
       <Image
-        src={restaurant.imageUrl}
+        src={restaurant.avatarImageUrl}
         alt={restaurant.name}
         fill
         className="object-cover"
