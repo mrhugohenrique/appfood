@@ -8,6 +8,7 @@ import { useParams, useSearchParams } from "next/navigation";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -92,7 +93,10 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
         consumptionMethod,
         cpf: data.cpf,
       });
-      if (!process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY) return;
+      if (!process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY) {
+        toast.error("Erro na configuração do pagamento. Por favor, tente novamente mais tarde.");
+        return;
+      }
       const stripe = await loadStripe(
         process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
       );
@@ -101,6 +105,7 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
       });
     } catch (error) {
       console.error(error);
+      toast.error("Ocorreu um erro ao finalizar o pedido. Por favor, tente novamente.");
     } finally {
       setIsLoading(false);
     }

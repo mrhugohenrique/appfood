@@ -1,4 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FoodHub - Plataforma de Delivery
+
+## 📱 Sobre o Projeto
+
+FoodHub é uma plataforma moderna de delivery de comida desenvolvida com as mais recentes tecnologias web. O projeto oferece uma experiência fluida para usuários que desejam encontrar e pedir comida de seus restaurantes favoritos.
+
+## 🚀 Tecnologias Utilizadas
+
+- Next.js 14
+- React
+- TypeScript
+- Tailwind CSS
+- Prisma
+- Shadcn/ui
+
+## ✨ Funcionalidades
+
+- 🔍 Busca avançada de restaurantes
+- 🍽️ Cardápio digital interativo
+- 🛒 Carrinho de compras em tempo real
+- 📱 Design responsivo
+- 🎨 Interface moderna e intuitiva
+
+## 🛠️ Instalação
+
+1. Clone o repositório
+```bash
+git clone https://github.com/mrhugohenrique/appfood
+```
 
 ## Getting Started
 

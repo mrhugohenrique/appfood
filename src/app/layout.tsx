@@ -15,8 +15,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "FSW Donalds",
-  description: "Bora finalizar esse projeto lindo!",
+  title: "FoodHub | Delivery de Comida Online",
+  description: "Plataforma profissional de delivery de comida desenvolvida com React, Next.js e Tailwind CSS.",
 };
 
 export default function RootLayout({
@@ -32,7 +32,7 @@ export default function RootLayout({
             {children}
           </Suspense>
         </CartProvider>
-        <Toaster />
+        <Toaster richColors position="bottom-right" />
       </body>
     </html>
   );

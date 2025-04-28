@@ -20,22 +20,22 @@ export default async function Home() {
       <div className="px-5 py-8 max-w-4xl mx-auto">
         {/* Hero Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Descubra os melhores restaurantes
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
+            Descubra a Excelência em Delivery
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Encontre seu próximo restaurante favorito e faça seu pedido com apenas alguns cliques
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4">
+            Conectamos você aos melhores restaurantes da sua região, oferecendo uma experiência gastronômica excepcional
           </p>
         </div>
 
         {/* Seção de Busca */}
-        <div className="flex flex-col gap-4 mb-12 bg-white p-6 rounded-2xl shadow-sm">
-          <div className="flex gap-3">
+        <div className="flex flex-col gap-4 mb-12 bg-white p-4 md:p-6 rounded-2xl shadow-sm">
+          <div className="flex flex-col md:flex-row gap-3">
             <Input 
               placeholder="Buscar por nome do restaurante ou cidade..."
-              className="flex-1 h-12 text-lg"
+              className="flex-1 h-10 md:h-12 text-base md:text-lg"
             />
-            <Button variant="default" className="h-12 px-6 text-lg">
+            <Button variant="default" className="h-10 md:h-12 px-4 md:px-6 text-base md:text-lg w-full md:w-auto">
               <SearchIcon className="w-5 h-5 mr-2" />
               Buscar
             </Button>
@@ -64,7 +64,7 @@ export default async function Home() {
             </Button>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {restaurants.map((restaurant) => (
               <RestaurantItem
                 key={restaurant.id}
@@ -75,6 +75,23 @@ export default async function Home() {
           </div>
         </div>
       </div>
+      
+      {/* Footer */}
+      <footer className="mt-16 border-t border-gray-100 bg-white py-8">
+        <div className="max-w-4xl mx-auto px-5 text-center">
+          <p className="text-sm text-gray-600">
+            Desenvolvido com ❤️ por Hugo Henrique | 
+            <a 
+              href="https://github.com/mrhugohenrique" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="ml-1 text-primary hover:underline"
+            >
+              GitHub
+            </a>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
